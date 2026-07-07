@@ -18,6 +18,7 @@ const libros = defineCollection({
     portada: z.string(),
     portadaAlt: z.string(),
     amazonUrl: z.string().optional(),
+    tiendaUrl: z.string().optional(),
     destacado: z.boolean().default(false),
     orden: z.number().default(0),
     tags: z.array(z.string()).default([]),
