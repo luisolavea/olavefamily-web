@@ -2,29 +2,44 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contacto | Editorial Olave Family">
+<BaseLayout title="Publica con nosotros | Editorial Olave Family" description="¿Tienes un manuscrito? Editorial Olave Family acompaña a autores que desean publicar obras íntimas, memorias o narrativa autobiográfica.">
   <section class="py-12 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <header class="mb-12 text-center">
-        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Contacto</h1>
-        <p class="text-lg text-stone-600">¿Interesado en nuestros libros? Escríbenos.</p>
+        <p class="text-sm font-medium tracking-widest uppercase text-amber-800 mb-4">Autores</p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Publica con nosotros</h1>
+        <p class="text-lg text-stone-600">¿Tienes una historia que merece ser contada? Conversemos.</p>
       </header>
 
-      <div class="bg-white rounded-lg shadow-sm border border-stone-200 p-8">
+      <div class="bg-white rounded-lg shadow-sm border border-stone-200 p-8 mb-8">
         <div class="space-y-6">
           <div>
-            <h3 class="font-medium text-stone-900 mb-1">Email</h3>
-            <a href="mailto:info@olavefamily.com" class="text-stone-600 hover:text-amber-800 transition-colors">info@olavefamily.com</a>
+            <h3 class="font-medium text-stone-900 mb-2">¿Qué buscamos?</h3>
+            <p class="text-stone-600">Obras íntimas, memorias personales, narrativa autobiográfica y relatos que nacen desde la experiencia vivida. Historias que honran la verdad de una vida real.</p>
           </div>
           <div>
-            <h3 class="font-medium text-stone-900 mb-1">Ubicación</h3>
-            <p class="text-stone-600">Casablanca, Chile</p>
-          </div>
-          <div>
-            <h3 class="font-medium text-stone-900 mb-2">Consultas directas</h3>
-            <p class="text-stone-600">Si prefieres adquirir nuestros libros fuera de Amazon, o deseas consultar por disponibilidad directa, envíos locales o copias firmadas, escríbenos directamente.</p>
+            <h3 class="font-medium text-stone-900 mb-2">¿Qué ofrecemos?</h3>
+            <ul class="text-stone-600 space-y-1 list-disc list-inside">
+              <li>Acompañamiento editorial personalizado</li>
+              <li>Diseño de portada profesional</li>
+              <li>Maquetación y producción digital</li>
+              <li>Distribución en Amazon (ebook y papel)</li>
+              <li>Apoyo en comunicación y difusión</li>
+            </ul>
           </div>
         </div>
+      </div>
+
+      <div class="bg-stone-50 rounded-lg p-8 text-center">
+        <h2 class="font-serif text-2xl font-bold text-stone-900 mb-4">Escríbenos</h2>
+        <p class="text-stone-600 mb-6">Cuéntanos sobre tu proyecto. Te responderemos en breve.</p>
+        <a 
+          href="mailto:editorial@olavefamily.com?subject=Consulta%20autor%20-%20Manuscrito"
+          class="inline-block bg-stone-900 text-white px-8 py-3 rounded-lg font-medium hover:bg-stone-800 transition-colors"
+        >
+          editorial@olavefamily.com
+        </a>
+        <p class="text-stone-500 text-sm mt-4">Casablanca, Chile</p>
       </div>
     </div>
   </section>
