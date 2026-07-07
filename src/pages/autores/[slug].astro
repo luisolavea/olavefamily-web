@@ -58,7 +58,11 @@ const librosAutor = todosLibros.filter(l => l.data.autorSlug === autor.data.slug
           <h1 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mb-6">{autor.data.nombre}</h1>
 
           <div class="text-stone-700 leading-relaxed mb-8 space-y-4">
-            <Content />
+            {autor.data.bioLarga ? (
+              <div class="prose prose-stone max-w-none" set:html={autor.data.bioLarga.replace(/\n\n/g, '<br/><br/>')} />
+            ) : (
+              <Content />
+            )}
           </div>
         </div>
       </div>
