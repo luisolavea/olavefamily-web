@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, render } from 'astro:content';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
   const autores = await getCollection('autores');
@@ -59,7 +60,7 @@ const librosAutor = todosLibros.filter(l => l.data.autorSlug === autor.data.slug
 
           <div class="text-stone-700 leading-relaxed mb-8 space-y-4">
             {autor.data.bioLarga ? (
-              <div class="prose prose-stone max-w-none" set:html={autor.data.bioLarga.replace(/\n\n/g, '<br/><br/>')} />
+              <div class="prose prose-stone max-w-none" set:html={marked.parse(autor.data.bioLarga)} />
             ) : (
               <Content />
             )}
