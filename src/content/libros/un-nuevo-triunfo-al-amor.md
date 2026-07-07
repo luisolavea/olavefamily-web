@@ -18,6 +18,7 @@ descripcionLarga: |
 portada: "/images/portada1.webp"
 portadaAlt: "Portada del libro Un nuevo triunfo al amor de Hilda Alarcón Mella"
 amazonUrl: "https://www.amazon.com"
+tiendaUrl: "https://agenciacuak.cl/producto/un-nuevo-triunfo-al-amor/"
 destacado: true
 orden: 1
 tags: ["memorias", "amor", "cartas", "trilogía", "autobiografía"]

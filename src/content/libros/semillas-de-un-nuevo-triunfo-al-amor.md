@@ -18,6 +18,7 @@ descripcionLarga: |
 portada: "/images/portada2.webp"
 portadaAlt: "Portada del libro Semillas de un nuevo triunfo al amor de Hilda Alarcón Mella"
 amazonUrl: "https://www.amazon.com"
+tiendaUrl: "https://agenciacuak.cl/producto/semillas-de-un-nuevo-triunfo-al-amor/"
 destacado: true
 orden: 2
 tags: ["memorias", "familia", "neurodivergencia", "maternidad", "trilogía", "autobiografía"]
