@@ -17,7 +17,7 @@ descripcionLarga: |
   Desde el nacimiento de cada hijo hasta los desafíos de la adolescencia, pasando por la pérdida de seres queridos y los milagros inesperados, esta historia es un legado de amor, fe y perseverancia.
 portada: "/images/portada2.webp"
 portadaAlt: "Portada del libro Semillas de un nuevo triunfo al amor de Hilda Alarcón Mella"
-amazonUrl: "https://www.amazon.com"
+amazonUrl: "https://a.co/d/0jh6poiE"
 tiendaUrl: "https://agenciacuak.cl/producto/semillas-de-un-nuevo-triunfo-al-amor/"
 destacado: true
 orden: 2

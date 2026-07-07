@@ -17,7 +17,7 @@ descripcionLarga: |
   El libro incluye una carta final al "yo" del pasado, escrita 47 años después de los hechos narrados, cerrando con belleza un ciclo emocional que sana palabra por palabra.
 portada: "/images/portada1.webp"
 portadaAlt: "Portada del libro Un nuevo triunfo al amor de Hilda Alarcón Mella"
-amazonUrl: "https://www.amazon.com"
+amazonUrl: "https://www.amazon.com/dp/B0FGV66657"
 tiendaUrl: "https://agenciacuak.cl/producto/un-nuevo-triunfo-al-amor/"
 destacado: true
 orden: 1
