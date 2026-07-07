@@ -35,10 +35,14 @@ const librosAutor = todosLibros.filter(l => l.data.autorSlug === autor.data.slug
       <div class="grid md:grid-cols-3 gap-10">
         <!-- Foto -->
         <div class="md:col-span-1">
-          <div class="aspect-square bg-stone-200 rounded-full overflow-hidden shadow-md max-w-xs mx-auto relative">
-            <div class="absolute inset-0 flex items-center justify-center text-stone-400">
-              <span class="font-serif text-lg text-stone-500">{autor.data.nombre}</span>
-            </div>
+          <div class="aspect-square bg-stone-200 rounded-full overflow-hidden shadow-md max-w-xs mx-auto">
+            {autor.data.foto ? (
+              <img src={autor.data.foto} alt={autor.data.nombre} class="w-full h-full object-cover" />
+            ) : (
+              <div class="w-full h-full flex items-center justify-center text-stone-400">
+                <span class="font-serif text-lg text-stone-500">{autor.data.nombre}</span>
+              </div>
+            )}
           </div>
           {autor.data.profesion && (
             <p class="text-center text-sm text-stone-500 mt-4">{autor.data.profesion}</p>
