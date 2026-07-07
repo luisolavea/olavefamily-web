@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const libros = await getCollection('libros');
+---
+
+<BaseLayout title="Libros | Editorial Olave Family">
+  <section class="py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-12">
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Nuestros libros</h1>
+        <p class="text-lg text-stone-600 max-w-2xl">Historias reales, memorias íntimas y obras que nacen desde la experiencia vivida.</p>
+      </header>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {libros.map(libro => (
+          <a href={`/libros/${libro.data.slug}/`} class="group block">
+            <div class="aspect-[2/3] bg-stone-200 rounded-lg overflow-hidden shadow-sm mb-4 relative">
+              <div class="absolute inset-0 flex items-center justify-center text-stone-400">
+                <div class="text-center p-6">
+                  <p class="font-serif text-xl font-bold text-stone-600 mb-2">{libro.data.titulo}</p>
+                  <p class="text-sm text-stone-500">{libro.data.autor}</p>
+                </div>
+              </div>
+            </div>
+            <h2 class="font-serif text-xl font-bold text-stone-900 group-hover:text-amber-800 transition-colors">{libro.data.titulo}</h2>
+            <p class="text-sm text-stone-500 mt-1">{libro.data.genero} · {libro.data.anio}</p>
+            <p class="text-stone-600 mt-2 line-clamp-3">{libro.data.sinopsis}</p>
+          </a>
+        ))}
+      </div>
+
+      {libros.length === 0 && (
+        <p class="text-stone-500 text-center py-16">Próximamente nuevas publicaciones.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

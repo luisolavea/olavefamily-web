@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const autores = await getCollection('autores');
+---
+
+<BaseLayout title="Autores | Editorial Olave Family">
+  <section class="py-12 sm:py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-12">
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 mb-4">Nuestros autores</h1>
+        <p class="text-lg text-stone-600 max-w-2xl">Voces que escriben desde la experiencia, la memoria y el coraje de contar lo vivido.</p>
+      </header>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+        {autores.map(autor => (
+          <a href={`/autores/${autor.data.slug}/`} class="group flex gap-6 items-start">
+            <div class="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 bg-stone-200 rounded-full overflow-hidden shadow-sm relative">
+              <div class="absolute inset-0 flex items-center justify-center text-stone-400">
+                <span class="font-serif text-sm text-stone-500 text-center px-4">{autor.data.nombre}</span>
+              </div>
+            </div>
+            <div class="flex-1 pt-2">
+              <h2 class="font-serif text-2xl font-bold text-stone-900 group-hover:text-amber-800 transition-colors mb-2">{autor.data.nombre}</h2>
+              {autor.data.profesion && (
+                <p class="text-sm text-amber-800 font-medium mb-2">{autor.data.profesion}</p>
+              )}
+              <p class="text-stone-600 line-clamp-3">{autor.data.bioCorta}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {autores.length === 0 && (
+        <p class="text-stone-500 text-center py-16">Próximamente nuevos autores.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

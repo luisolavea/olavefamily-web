@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Editorial Olave Family — Libros, memorias y teatro. Proyecto editorial independiente dedicado a la publicación y preservación de obras literarias." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style is:global>
+    :root {
+      --color-ink: #1a1a1a;
+      --color-paper: #faf8f5;
+      --color-paper-dark: #f0ebe3;
+      --color-accent: #8b6914;
+      --color-accent-light: #c4a35a;
+      --color-muted: #6b6560;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-ink);
+      background: var(--color-paper);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="border-b border-stone-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center justify-between h-16">
+        <a href="/" class="font-serif text-xl font-bold tracking-tight text-stone-900 hover:text-amber-800 transition-colors">
+          Olave Family
+        </a>
+        <div class="hidden sm:flex items-center gap-8 text-sm font-medium">
+          <a href="/" class="text-stone-600 hover:text-stone-900 transition-colors">Inicio</a>
+          <a href="/libros" class="text-stone-600 hover:text-stone-900 transition-colors">Libros</a>
+          <a href="/autores" class="text-stone-600 hover:text-stone-900 transition-colors">Autores</a>
+          <a href="/blog" class="text-stone-600 hover:text-stone-900 transition-colors">Blog</a>
+          <a href="/contacto" class="text-stone-600 hover:text-stone-900 transition-colors">Contacto</a>
+        </div>
+        <button id="menu-toggle" class="sm:hidden p-2 text-stone-600" aria-label="Abrir menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden sm:hidden pb-4 space-y-3 text-sm font-medium">
+        <a href="/" class="block text-stone-600 hover:text-stone-900">Inicio</a>
+        <a href="/libros" class="block text-stone-600 hover:text-stone-900">Libros</a>
+        <a href="/autores" class="block text-stone-600 hover:text-stone-900">Autores</a>
+        <a href="/blog" class="block text-stone-600 hover:text-stone-900">Blog</a>
+        <a href="/contacto" class="block text-stone-600 hover:text-stone-900">Contacto</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <slot />
+  </main>
+
+  <footer class="border-t border-stone-200 bg-stone-50 mt-auto">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid sm:grid-cols-3 gap-8 text-sm">
+        <div>
+          <h3 class="font-serif font-bold text-lg mb-3">Olave Family</h3>
+          <p class="text-stone-600 leading-relaxed">Editorial independiente dedicada a la publicación y preservación de obras literarias, formativas y culturales.</p>
+        </div>
+        <div>
+          <h4 class="font-medium mb-3">Navegación</h4>
+          <ul class="space-y-2 text-stone-600">
+            <li><a href="/" class="hover:text-stone-900 transition-colors">Inicio</a></li>
+            <li><a href="/libros" class="hover:text-stone-900 transition-colors">Libros</a></li>
+            <li><a href="/autores" class="hover:text-stone-900 transition-colors">Autores</a></li>
+            <li><a href="/blog" class="hover:text-stone-900 transition-colors">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-medium mb-3">Contacto</h4>
+          <p class="text-stone-600">Casablanca, Chile</p>
+          <p class="text-stone-600 mt-1">info@olavefamily.com</p>
+        </div>
+      </div>
+      <div class="border-t border-stone-200 mt-8 pt-8 text-center text-stone-500 text-xs">
+        <p>&copy; {new Date().getFullYear()} Editorial Olave Family. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>

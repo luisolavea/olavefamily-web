@@ -1,43 +1,60 @@
-# Astro Starter Kit: Minimal
+# Editorial Olave Family
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio web estático para Editorial Olave Family — editorial independiente dedicada a la publicación y preservación de obras literarias, formativas y culturales.
+
+## 🚀 Tecnologías
+
+- **Astro** — Generador de sitio estático
+- **Tailwind CSS** — Estilos
+- **Markdown** — Fuente de contenido
+- **Cloudflare Pages** — Hosting y CDN
+
+## 📁 Estructura
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── content/          # Contenido en Markdown (libros, autores, posts)
+│   ├── layouts/          # Plantillas base
+│   ├── pages/            # Rutas del sitio
+│   └── components/       # Componentes reutilizables
+├── public/images/        # Imágenes estáticas
+├── build.sh             # Script de build (lee desde Obsidian Vault)
+└── dist/                # Output estático (generado)
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 📝 Contenido desde Obsidian Vault
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+El contenido se edita en el Obsidian Vault compartido:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```
+vault/40-Proyectos/Editorial-Olave-Family/
+├── content/libros/       # Fichas de libros
+├── content/autores/      # Perfiles de autores
+├── content/posts/        # Blog
+└── public/images/        # Portadas y fotos
+```
 
-## 🧞 Commands
+Ver [build.sh](./build.sh) para el flujo de sincronización.
 
-All commands are run from the root of the project, from a terminal:
+## 🛠️ Desarrollo local
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm install
+npm run dev      # Servidor local: http://localhost:4321
+npm run build    # Build estático
+npm run preview  # Preview del build
+```
 
-## 👀 Want to learn more?
+## 🚀 Deploy
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Automático via GitHub → Cloudflare Pages:
+
+1. Push a `main` → Trigger build
+2. Cloudflare Pages ejecuta `./build.sh`
+3. Genera `dist/` y deploya
+
+Ver [GITHUB-GUIDE.md](./GITHUB-GUIDE.md) para configuración inicial.
+
+## 📄 Licencia
+
+© 2026 Editorial Olave Family. Todos los derechos reservados.

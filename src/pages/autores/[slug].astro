@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const autores = await getCollection('autores');
+  return autores.map(autor => ({
+    params: { slug: autor.data.slug },
+    props: { autor },
+  }));
+}
+
+const { autor } = Astro.props;
+const { Content } = await render(autor);
+
+// Buscar libros de este autor
+const todosLibros = await getCollection('libros');
+const librosAutor = todosLibros.filter(l => l.data.autorSlug === autor.data.slug);
+---
+
+<BaseLayout title={`${autor.data.nombre} | Autora | Editorial Olave Family`} description={autor.data.bioCorta}>
+  <article class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-stone-500 mb-8" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li><a href="/" class="hover:text-stone-900">Inicio</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/autores" class="hover:text-stone-900">Autores</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-stone-900 font-medium" aria-current="page">{autor.data.nombre}</li>
+        </ol>
+      </nav>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Foto -->
+        <div class="md:col-span-1">
+          <div class="aspect-square bg-stone-200 rounded-full overflow-hidden shadow-md max-w-xs mx-auto relative">
+            <div class="absolute inset-0 flex items-center justify-center text-stone-400">
+              <span class="font-serif text-lg text-stone-500">{autor.data.nombre}</span>
+            </div>
+          </div>
+          {autor.data.profesion && (
+            <p class="text-center text-sm text-stone-500 mt-4">{autor.data.profesion}</p>
+          )}
+          {autor.data.ubicacion && (
+            <p class="text-center text-sm text-stone-500 mt-1">{autor.data.ubicacion}</p>
+          )}
+        </div>
+
+        <!-- Info -->
+        <div class="md:col-span-2">
+          <p class="text-sm font-medium tracking-widest uppercase text-amber-800 mb-3">Autora | Memorias y narrativa autobiográfica</p>
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mb-6">{autor.data.nombre}</h1>
+
+          <div class="text-stone-700 leading-relaxed mb-8 space-y-4">
+            <Content />
+          </div>
+        </div>
+      </div>
+
+      <!-- Obras -->
+      {librosAutor.length > 0 && (
+        <div class="mt-16">
+          <h2 class="font-serif text-2xl font-bold text-stone-900 mb-8">Obras</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            {librosAutor.map(libro => (
+              <a href={`/libros/${libro.data.slug}/`} class="group block">
+                <div class="aspect-[2/3] bg-stone-200 rounded-lg overflow-hidden shadow-sm mb-4 relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-stone-400">
+                    <div class="text-center p-6">
+                      <p class="font-serif text-lg font-bold text-stone-600 mb-1">{libro.data.titulo}</p>
+                      <p class="text-xs text-stone-500">{libro.data.genero}</p>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="font-serif text-lg font-bold text-stone-900 group-hover:text-amber-800 transition-colors">{libro.data.titulo}</h3>
+                <p class="text-sm text-stone-500">{libro.data.genero} · {libro.data.anio}</p>
+                <p class="text-sm text-stone-600 mt-2 line-clamp-2">{libro.data.sinopsis}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </article>
+</BaseLayout>

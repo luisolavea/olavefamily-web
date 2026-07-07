@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const libros = await getCollection('libros');
+  return libros.map(libro => ({
+    params: { slug: libro.data.slug },
+    props: { libro },
+  }));
+}
+
+const { libro } = Astro.props;
+const { Content } = await render(libro);
+---
+
+<BaseLayout title={`${libro.data.titulo} | Editorial Olave Family`} description={libro.data.sinopsis}>
+  <article class="py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-stone-500 mb-8" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2">
+          <li><a href="/" class="hover:text-stone-900">Inicio</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/libros" class="hover:text-stone-900">Libros</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-stone-900 font-medium" aria-current="page">{libro.data.titulo}</li>
+        </ol>
+      </nav>
+
+      <div class="grid md:grid-cols-5 gap-10">
+        <!-- Portada -->
+        <div class="md:col-span-2">
+          <div class="aspect-[2/3] bg-stone-200 rounded-lg overflow-hidden shadow-lg relative">
+            <div class="absolute inset-0 flex items-center justify-center text-stone-400 p-6 text-center">
+              <div>
+                <p class="font-serif text-xl font-bold text-stone-600 mb-2">{libro.data.titulo}</p>
+                <p class="text-sm text-stone-500">{libro.data.autor}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="md:col-span-3">
+          <p class="text-sm font-medium tracking-widest uppercase text-amber-800 mb-3">
+            {libro.data.genero}
+          </p>
+          <h1 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mb-2">{libro.data.titulo}</h1>
+          <p class="text-stone-600 italic mb-4">{libro.data.subtitulo}</p>
+          <p class="text-sm text-stone-500 mb-6">
+            Por <a href={`/autores/${libro.data.autorSlug}/`} class="text-stone-900 font-medium hover:text-amber-800 transition-colors">{libro.data.autor}</a>
+            {libro.data.anio && ` · ${libro.data.anio}`}
+          </p>
+          <p class="text-stone-700 leading-relaxed mb-8">{libro.data.sinopsis}</p>
+
+          {libro.data.amazonUrl && (
+            <a 
+              href={libro.data.amazonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block bg-amber-800 text-white px-6 py-3 rounded-lg font-medium hover:bg-amber-900 transition-colors mb-8"
+            >
+              Comprar en Amazon →
+            </a>
+          )}
+
+          <!-- Metadatos -->
+          <div class="border-t border-stone-200 pt-6 grid grid-cols-2 gap-4 text-sm">
+            {libro.data.isbn && (
+              <div>
+                <p class="text-stone-500 mb-1">ISBN</p>
+                <p class="font-medium text-stone-900">{libro.data.isbn}</p>
+              </div>
+            )}
+            {libro.data.paginas && (
+              <div>
+                <p class="text-stone-500 mb-1">Páginas</p>
+                <p class="font-medium text-stone-900">{libro.data.paginas}</p>
+              </div>
+            )}
+            <div>
+              <p class="text-stone-500 mb-1">Año</p>
+              <p class="font-medium text-stone-900">{libro.data.anio}</p>
+            </div>
+            <div>
+              <p class="text-stone-500 mb-1">Género</p>
+              <p class="font-medium text-stone-900">{libro.data.genero}</p>
+            </div>
+          </div>
+
+          {libro.data.tags.length > 0 && (
+            <div class="mt-6 flex flex-wrap gap-2">
+              {libro.data.tags.map(tag => (
+                <span class="px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-xs">{tag}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <!-- Contenido Markdown -->
+      <div class="mt-16 prose prose-stone max-w-none">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
