@@ -16,13 +16,17 @@ const libros = await getCollection('libros');
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {libros.map(libro => (
           <a href={`/libros/${libro.data.slug}/`} class="group block">
-            <div class="aspect-[2/3] bg-stone-200 rounded-lg overflow-hidden shadow-sm mb-4 relative">
-              <div class="absolute inset-0 flex items-center justify-center text-stone-400">
-                <div class="text-center p-6">
-                  <p class="font-serif text-xl font-bold text-stone-600 mb-2">{libro.data.titulo}</p>
-                  <p class="text-sm text-stone-500">{libro.data.autor}</p>
+            <div class="aspect-[2/3] bg-stone-200 rounded-lg overflow-hidden shadow-sm mb-4">
+              {libro.data.portada ? (
+                <img src={libro.data.portada} alt={libro.data.titulo} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-stone-400 p-6 text-center">
+                  <div>
+                    <p class="font-serif text-xl font-bold text-stone-600 mb-2">{libro.data.titulo}</p>
+                    <p class="text-sm text-stone-500">{libro.data.autor}</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <h2 class="font-serif text-xl font-bold text-stone-900 group-hover:text-amber-800 transition-colors">{libro.data.titulo}</h2>
             <p class="text-sm text-stone-500 mt-1">{libro.data.genero} · {libro.data.anio}</p>

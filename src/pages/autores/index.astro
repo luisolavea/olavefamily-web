@@ -16,10 +16,14 @@ const autores = await getCollection('autores');
       <div class="grid sm:grid-cols-2 gap-8">
         {autores.map(autor => (
           <a href={`/autores/${autor.data.slug}/`} class="group flex gap-6 items-start">
-            <div class="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 bg-stone-200 rounded-full overflow-hidden shadow-sm relative">
-              <div class="absolute inset-0 flex items-center justify-center text-stone-400">
-                <span class="font-serif text-sm text-stone-500 text-center px-4">{autor.data.nombre}</span>
-              </div>
+            <div class="w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 bg-stone-200 rounded-full overflow-hidden shadow-sm">
+              {autor.data.foto ? (
+                <img src={autor.data.foto} alt={autor.data.nombre} class="w-full h-full object-cover" />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center text-stone-400">
+                  <span class="font-serif text-sm text-stone-500 text-center px-4">{autor.data.nombre}</span>
+                </div>
+              )}
             </div>
             <div class="flex-1 pt-2">
               <h2 class="font-serif text-2xl font-bold text-stone-900 group-hover:text-amber-800 transition-colors mb-2">{autor.data.nombre}</h2>
