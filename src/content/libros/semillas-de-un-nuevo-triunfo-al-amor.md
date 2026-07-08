@@ -1,13 +1,13 @@
 ---
-titulo: "Semillas de un nuevo triunfo al amor"
-subtitulo: "Segunda entrega de una trilogía autobiográfica"
-slug: "semillas-de-un-nuevo-triunfo-al-amor"
-autor: "Hilda Alarcón Mella"
-autorSlug: "hilda-alarcon"
-genero: "Memorias · Narrativa autobiográfica"
+titulo: Semillas de un nuevo triunfo al amor
+subtitulo: Segunda entrega de una trilogía autobiográfica
+slug: semillas-de-un-nuevo-triunfo-al-amor
+autor: Hilda Alarcón Mella
+autorSlug: hilda-alarcon
+genero: Memorias · Narrativa autobiográfica
 anio: 2026
-sinopsis: "Segunda entrega de la trilogía autobiográfica. Un relato íntimo sobre la maternidad, la neurodivergencia familiar y el legado del amor que trasciende generaciones."
-descripcionLarga: |
+sinopsis: Segunda entrega de la trilogía autobiográfica. Un relato íntimo sobre la maternidad, la neurodivergencia familiar y el legado del amor que trasciende generaciones.
+descripcionLarga: |-
   **Semillas de un nuevo triunfo al amor** es la segunda entrega de una trilogía autobiográfica que narra la historia de una familia marcada por el amor, la resiliencia y la neurodivergencia.
 
   Hilda Alarcón Mella, autora de memorias íntimas inspiradas en hechos reales, comparte en estas páginas la historia de cómo, a través de cartas escritas durante ocho años, construyó junto a su esposo Luis una vida marcada por el amor, la distancia, la espera y la esperanza.
@@ -15,13 +15,19 @@ descripcionLarga: |
   Este segundo libro explora la maternidad, la crianza de hijos neurodivergentes (TEA, TDAH), y cómo una familia puede transformar sus desafíos en fortalezas. Es un testimonio de que las diferencias no son limitaciones, sino formas distintas y maravillosas de ver el mundo.
 
   Desde el nacimiento de cada hijo hasta los desafíos de la adolescencia, pasando por la pérdida de seres queridos y los milagros inesperados, esta historia es un legado de amor, fe y perseverancia.
-portada: "/images/portada2.webp"
-portadaAlt: "Portada del libro Semillas de un nuevo triunfo al amor de Hilda Alarcón Mella"
-amazonUrl: "https://a.co/d/0jh6poiE"
-tiendaUrl: "https://agenciacuak.cl/producto/semillas-de-un-nuevo-triunfo-al-amor/"
+portada: /images/portada2.webp
+portadaAlt: Portada del libro Semillas de un nuevo triunfo al amor de Hilda Alarcón Mella
+amazonUrl: https://a.co/d/0jh6poiE
+tiendaUrl: https://nemetonlab.com/producto/semillas-de-un-nuevo-triunfo-al-amor/
 destacado: true
 orden: 2
-tags: ["memorias", "familia", "neurodivergencia", "maternidad", "trilogía", "autobiografía"]
+tags:
+  - memorias
+  - familia
+  - neurodivergencia
+  - maternidad
+  - trilogía
+  - autobiografía
 ---
 
 ## Sobre este libro
