@@ -31,3 +31,9 @@ pnpm-debug.log*
 
 # Optional: si no querés subir imágenes grandes al repo
 # public/images/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
