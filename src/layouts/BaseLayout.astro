@@ -4,9 +4,13 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title, description = "Editorial Olave Family — Libros, memorias y teatro. Proyecto editorial independiente dedicado a la publicación y preservación de obras literarias." } = Astro.props;
+const { title, description = "Editorial Olave Family — Libros, memorias y teatro. Proyecto editorial independiente dedicado a la publicación y preservación de obras literarias.", image = "https://olavefamily.com/images/logo.jpg", type = "website" } = Astro.props;
+
+const canonicalUrl = `https://olavefamily.com${Astro.url.pathname}`;
 ---
 
 <!DOCTYPE html>
@@ -15,6 +19,17 @@ const { title, description = "Editorial Olave Family — Libros, memorias y teat
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content={type} />
+  <meta property="og:locale" content="es_CL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={image} />
+  <link rel="canonical" href={canonicalUrl} />
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

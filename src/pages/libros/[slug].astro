@@ -14,7 +14,7 @@ const { libro } = Astro.props;
 const { Content } = await render(libro);
 ---
 
-<BaseLayout title={`${libro.data.titulo} | Editorial Olave Family`} description={libro.data.sinopsis}>
+<BaseLayout title={`${libro.data.titulo} | Editorial Olave Family`} description={libro.data.sinopsis} image={`https://olavefamily.com${libro.data.portada}`} type="book">
   <article class="py-12 sm:py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->

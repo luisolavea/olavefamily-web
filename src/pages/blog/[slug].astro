@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.titulo} | Blog | Editorial Olave Family`} description={post.data.resumen}>
+<BaseLayout title={`${post.data.titulo} | Blog | Editorial Olave Family`} description={post.data.resumen} type="article">
   <article class="py-12 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumb -->
