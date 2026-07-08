@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+/* Mejorar legibilidad del contenido */
+.prose p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.prose p + p {
+  margin-top: 1.5rem;
+}
+
+.prose h2, .prose h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose blockquote {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid #8b6914;
+}
