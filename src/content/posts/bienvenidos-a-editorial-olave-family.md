@@ -1,7 +1,7 @@
 ---
 titulo: "Bienvenidos a nuestro blog familiar"
 slug: "bienvenidos-a-editorial-olave-family"
-fecha: 2025-01-07
+fecha: 2026-01-07
 autor: "Luis Olave A."
 autorSlug: "luis-olave"
 resumen: "El punta pie inicial a este espacio que hemos creado como familia. Un lugar donde guardar y compartir nuestra historia, experiencias, anécdotas y aprendizajes."
