@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* Ajustar tamaños de títulos en prose — más compactos */
+.prose h1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.75em;
+  line-height: 1.3;
+}
+
+.prose h3 {
+  font-size: 1.375em;
+  line-height: 1.4;
+}
+
 /* Mejorar legibilidad del contenido */
 .prose p {
   margin-bottom: 1.5rem;
